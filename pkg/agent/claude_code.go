@@ -38,7 +38,7 @@ func (a *ClaudeCodeAgent) GetDefaults(model string) (*AgentSpec, error) {
 			ArgTemplateMcpServer:      "--mcp-config {{ .File }}",
 			ArgTemplateAllowedTools:   "mcp__{{ .ServerName }}__{{ .ToolName }}",
 			AllowedToolsJoinSeparator: &separator,
-			RunPrompt:                 `claude {{ .McpServerFileArgs }} --strict-mcp-config --allowedTools "{{ .AllowedToolArgs }}" --print "{{ .Prompt }}"`,
+			RunPrompt:                 `claude {{ .McpServerFileArgs }} --strict-mcp-config --allowedTools "{{ .AllowedToolArgs }}" -p "{{ .Prompt }}" --dangerously-skip-permissions --output-format stream-json --verbose`,
 		},
 	}, nil
 }
